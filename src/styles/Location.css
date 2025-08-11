@@ -1,0 +1,66 @@
+:root{
+  --Fill-LightGray: #F5F5F5;  /* Figma: Fill/LightGray */
+  --Primary: #005A37;
+  --Stroke-Primary-8: rgba(0,90,55,0.08);
+}
+
+/* Figma Layer: width 327, padding 8 20, radius 12, bg LightGray
+   layout: display:flex; justify-content:space-between; align-items:center; */
+.loc-container{
+  display: flex;
+  padding: 8px 20px;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 0 0;
+  border-radius: 12px;
+  background: var(--Fill-LightGray, #F5F5F5);
+}
+
+/* 왼쪽 아이콘 + 텍스트 */
+.loc-left{
+  display:flex; align-items:center; gap: 4px;
+}
+
+.loc-icon{
+  width: 20px;
+  height: 20px;
+  color: var(--Primary);
+}
+.loc-icon *{ fill: currentColor; } /* SVG가 currentColor 따르도록 */
+
+/* Figma 글자 스타일 근사치 */
+.loc-text{
+  color: var(--Text-Primary, #005A37);
+
+/* 16/Regular */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 22.4px */
+  letter-spacing: -0.16px;
+}
+
+/* 지역 변경 버튼 — Figma Dev: padding 4px 12px, r=8, border 1px Stroke/Primary-8, bg White-100 */
+.loc-change{
+  display: flex;
+  padding: 4px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--Stroke-Primary-8, rgba(0, 90, 55, 0.08));
+  background: var(--Fill-White-100, #FFF);
+  color: var(--Text-Black, #141414);
+
+/* 16/Regular */
+font-family: Pretendard;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 140%; /* 22.4px */
+letter-spacing: -0.16px;
+
+}
+.loc-change:hover{ background:#F5F5F5; } /* 살짝만 톤업 */
+

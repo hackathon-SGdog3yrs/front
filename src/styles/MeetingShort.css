@@ -1,0 +1,97 @@
+:root{
+  --panel-bg: #FFFFFF;
+  --card-border: #E5E5E5;
+  --text-strong: #222222;
+  --text-dark-gray: #4D4D4D; /* Figma Text/DarkGray */
+}
+
+/* 카드: padding 20, radius 8, 썸네일+본문 2열 */
+.ms-card{
+  display: grid;
+  grid-template-columns: 80px 1fr; /* 썸네일 80 */
+  gap: 16px;
+  padding: 20px;
+  background: var(--panel-bg);
+  
+  
+  display: flex;
+padding: 20px;
+align-items: center;
+gap: 16px;
+align-self: stretch;
+border-bottom: 1px solid var(--Stroke-LightGray, #F5F5F5);
+background: var(--Fill-White-100, #FFF);
+}
+
+/* 썸네일 */
+.ms-thumb{
+ width: 152px;
+height: 152px;
+border-radius: 6px;
+background: #D9D9D9;
+}
+
+
+/* 본문 */
+.ms-content{
+  display: grid;
+  grid-template-rows: auto auto auto;
+  row-gap: 6px;
+}
+
+/* 제목: 16/700 */
+.ms-title{
+ color: var(--Text-Black, #141414);
+
+/* 20/SemiBold */
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: 120%; /* 24px */
+letter-spacing: -0.2px;
+}
+
+/* 설명: 16/Regular, DarkGray */
+.ms-desc{
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;              /* Regular */
+  line-height: 1.4;              /* 140% */
+  letter-spacing: -0.16px;
+  color: var(--text-dark-gray);  /* #4D4D4D */
+}
+
+/* 메타 라인 */
+.ms-meta{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;                 /* 세로8, 가로16 */
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-dark-gray);
+}
+
+/* 메타 아이템 */
+.ms-meta__item{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1 0 auto;                /* 시안 느낌 유지 */
+}
+
+/* 작은 점(아이콘 자리 플레이스홀더) */
+.ms-dot{
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #C9C9C9; display:inline-block;
+}
+
+/* 23/100에서 현재 인원 강조 색 */
+.ms-members-current{
+   font-weight: 600;
+   color: #00B493;
+  }
+
+/* 리스트에서 카드 간 간격(부모가 gap 없을 때) */
+.list .ms-card + .ms-card{ margin-top: 12px; }
