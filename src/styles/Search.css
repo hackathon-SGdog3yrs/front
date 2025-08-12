@@ -1,0 +1,57 @@
+/* =========================
+   Search.css
+   홈 스타일과 톤/여백 맞춤
+   ========================= */
+
+.search-page .phone {
+  /* 필요 시 개별 페이지 튜닝 */
+  background: #fff;
+}
+
+/* 상단: 뒤로가기 + 검색바 래퍼 */
+.search-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  /* 홈과 유사한 좌우 여백/톤 */
+  
+  background: #fff;
+  border-bottom: 1px solid #eee;
+
+  /* 스크롤해도 상단 고정 */
+    position: sticky;
+  
+    width: 376px;
+    padding: 80px 24px 20px 24px;
+    
+    gap: 16px;
+  z-index: 90;
+  top:0;
+}
+
+/* 뒤로가기 버튼 */
+.search-header .back-btn {
+  border: 0;
+  background: transparent;
+  padding: 6px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.search-header .back-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+/* 검색 결과 리스트 */
+.search-results {
+  display: grid;         /* 추후 2열 등으로 바꾸기 쉬움 */
+  gap: 16px;             /* 카드 간 간격 */
+    /* 홈과 톤 맞춘 내부 여백 */
+}
+
+/* 하단 네비 가림 방지 (Home과 동일) */
+.nav-spacer {
+  height: 84px;
+}

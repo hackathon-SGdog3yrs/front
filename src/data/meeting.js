@@ -8,7 +8,7 @@ const meetings = [
     time: "2025.08.10 / 10:00",
     currentCount: 23,
     maxCount: 100,
-    highlightColor: "#00B493",
+    highlightColor: "#B40039",
   },
   {
     title: "홍대 북클럽",
@@ -17,7 +17,7 @@ const meetings = [
     time: "2025.08.12 / 14:00",
     currentCount: 8,
     maxCount: 20,
-    highlightColor: "#00B493",
+    highlightColor: "#B40039",
   },
   {
     title: "아침 러닝 모임",
@@ -26,7 +26,7 @@ const meetings = [
     time: "2025.08.15 / 07:00",
     currentCount: 15,
     maxCount: 30,
-    highlightColor: "#00B493",
+    highlightColor: "#B40039",
   },
 ];
 

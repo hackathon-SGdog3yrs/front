@@ -15,9 +15,9 @@
   
   
   display: flex;
-padding: 20px;
+
 align-items: center;
-gap: 16px;
+
 align-self: stretch;
 border-bottom: 1px solid var(--Stroke-LightGray, #F5F5F5);
 background: var(--Fill-White-100, #FFF);

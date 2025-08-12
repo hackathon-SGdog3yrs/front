@@ -24,13 +24,17 @@
 .nav-label{ font-size: 12px; line-height: 1; }
 
 /* 활성 상태: 글자/아이콘 초록 + 얇고 긴 상단 라인 */
-.nav-item.active{ color: var(--primary); font-weight: 600; }
+.nav-item.active{ 
+  color: var(--primary); 
+  font-weight: 600;
+  
+}
 .nav-item.active::before{
   content: "";
   position: absolute;
   top: -2px;                    /* 패널 내부 상단에 딱 붙게 */
-  left: 10%;
-  width: 80%;                   /* 길게 */
+  
+  width: 100%;                   /* 길게 */
   height: 2px;                  /* 얇게 */
   background: var(--primary);
   border-radius: 2px;

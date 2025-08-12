@@ -5,13 +5,16 @@ import TopBar from "../components/TopBar";
 import Button from "../components/Button";
 import meetings from "../data/meeting"; // ✅ 더미데이터 불러오기
 import "../styles/Home.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
+  
   return (
     <div className="screen">
       <div className="phone">
         {/* 상단바 */}
-        <TopBar sticky />
+        <TopBar sticky onSearchClick={() => navigate("/search")} />
 
         {/* 메인 타이틀 */}
         <h2 className="home-title">오늘은 어떤 모임에{"\n"}참여해볼까요?</h2>
