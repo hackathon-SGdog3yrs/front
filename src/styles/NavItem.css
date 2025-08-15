@@ -13,7 +13,16 @@
   padding: 20px 8px 0;           /* Dev Mode: top 20px, side 8px */
   color: var(--text-medium);
   cursor: pointer;
-  position: relative;            /* 상단 라인 기준 */
+  position: relative;   
+  
+           /* 상단 라인 기준 */
+}
+
+.nav-item .nav-icon {
+  width: 28px;        /* ← 원하는 크기 */
+  height: 28px;       /* ← 원하는 크기 */
+  flex: 0 0 auto;     /* 줄바꿈/축소 방지 */
+  display: inline-block;
 }
 
 /* 아이콘은 currentColor를 따르도록 */
@@ -27,6 +36,7 @@
 .nav-item.active{ 
   color: var(--primary); 
   font-weight: 600;
+  
   
 }
 .nav-item.active::before{

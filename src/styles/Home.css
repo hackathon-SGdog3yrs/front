@@ -48,9 +48,9 @@ align-self: stretch;
 }
 
 .btn {
-  height: 40px;
+  height: 44px;
   border-radius: 8px;
-  font-size: 14px;
+  
   font-weight: 700;
   border: 1px solid transparent;
   cursor: pointer;

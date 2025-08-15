@@ -36,10 +36,12 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  
+
 }
 
 .back-btn img,
 .search-btn img {
-  width: 20px;
-  height: 20px;
+  width: 32px;
+  height: 32px;
 }
