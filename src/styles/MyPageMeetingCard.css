@@ -1,0 +1,47 @@
+/* src/styles/MyPageMeetingCard.css */
+
+.mypage-meeting-item {
+    padding: 16px 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .item-title-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin: 0 0 8px;
+  }
+  
+  .item-body-text {
+    font-size: 14px;
+    color: #4d4d4d;
+    margin: 0 0 12px;
+  }
+  
+  .meeting-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .info-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .current-count {
+    color: #dc2626;
+  }
+  
+  .meeting-location {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }

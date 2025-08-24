@@ -1,0 +1,96 @@
+/* ================================
+   ChatInputBar2 (공통 컴포넌트 기본 스타일)
+   - 위치/패딩/높이 등은 화면 전용 CSS에서 제어
+   ================================ */
+
+.chatbar2 {
+  width: 100%;
+  
+  z-index: 250;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+
+.chatbar2-inner {
+  width: 100%;
+  background: var(--panel-bg, #fff);
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -2px 4px rgba(0,0,0,.1);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+}
+
+/* 왼쪽 pill 버튼 */
+.chatbar2-chip {
+display: flex;
+padding: 10px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+align-self: stretch;
+border-radius: 12px;
+background: var(--Fill-Primary-12, rgba(0, 90, 55, 0.12));
+color: var(--Text-Primary-80, rgba(0, 90, 55, 0.80));
+text-align: center;
+
+/* 14/SemiBold */
+font-family: Pretendard;
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: 140%; /* 19.6px */
+  border: none;
+  outline: none;
+}
+
+.chatbar2-chip .badge {
+  display: inline-block;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #0A7D5A;
+  color: #fff;
+  font-size: 11px;
+  line-height: 18px;
+  text-align: center;
+}
+
+/* 가운데 입력 */
+.chatbar2-input {
+display: flex;
+padding: 10px 16px;
+justify-content: space-between;
+align-items: center;
+flex: 1 0 0;
+border-radius: 12px;
+background: var(--Fill-LightGray, #F5F5F5);
+}
+
+/* 전송 버튼 */
+.chatbar2-send {
+ width: 28px;
+height: 28px;
+fill: var(--Fill-Secondary, #00B493);
+}
+
+.chatbar2-send:disabled {
+  opacity: .45;
+  cursor: default;
+}
+
+.chatbar2-send svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}

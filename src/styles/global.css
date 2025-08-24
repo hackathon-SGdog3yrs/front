@@ -1,0 +1,56 @@
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+html { scrollbar-gutter: stable both-edges; }
+body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+               system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo',
+               'Noto Sans KR', sans-serif;
+  color: #111;
+  background: #E9ECEF; /* 프레임 바깥 배경 */
+}
+
+/* Frame variables */
+:root{
+  --frame-width: 100%;
+  --nav-height: 84px;                /* 실제 Navbar 높이 */
+}
+
+/* 화면 중앙에 폰 프레임 */
+.screen{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #E9ECEF;
+}
+
+/* 실제 폰 프레임(기본은 네비 여백 없음) */
+.phone{
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 0;           /* ★ 기본값은 0 */
+}
+
+/* 네비가 있는 화면에서만 여백 추가 */
+.phone.has-nav{
+  padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom, 0px));
+}
+
+/* 네비가 없는 화면(예: /ai) */
+.phone.no-nav{
+  padding-bottom: 0 !important; /* ★ 반드시 0 */
+}
+
+/* AI 추천 화면 전용 배경 */
+.phone.ai-recommend{
+  background: #F5F5F5;
+}
+
+/* 페이지 공통 컨텐트 여백이 필요하다면(선택) */
+/* .page-root{ padding: 12px 16px; } */

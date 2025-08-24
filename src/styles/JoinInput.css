@@ -1,0 +1,83 @@
+:root{
+  --stroke: #e2e2e2;
+  --placeholder: #9da3a7;
+  --text: #111;
+  --green: rgba(0, 90, 55, 1);       /* #005A37 */
+  --green-glow: rgba(0, 90, 55, 0.12);
+  --red: rgba(180, 0, 57, 1);        /* #B40039 */
+  --red-glow: rgba(180, 0, 57, 0.12);
+}
+
+.join-input{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.join-label{
+  color: var(--Text-Black, #141414);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 140%;
+  display: flex;
+  padding-left: 8px;
+  align-items: center;
+  gap: 4px;
+}
+
+.join-box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  height: 46px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--stroke);
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* 포커스: 초록 */
+.join-box:focus-within{
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px var(--green-glow);
+}
+
+.join-control{
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+  color: var(--text);
+}
+
+.join-control::placeholder{ color: var(--placeholder); }
+
+.join-right{
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.join-helper{
+  font-size: 11px;
+  color: #6d6d6d;
+  margin-left: 4px;
+}
+
+/* helper와 error가 둘 다 보이도록 유지 */
+.join-error{
+  font-size: 11px;
+  color: var(--red);
+  margin-left: 4px;
+}
+
+/* 에러일 땐 초록보다 빨강이 우선 */
+.join-input.has-error .join-box{
+  border-color: var(--red);
+  box-shadow: 0 0 0 2px var(--red-glow);
+}

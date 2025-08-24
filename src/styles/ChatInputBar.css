@@ -1,0 +1,47 @@
+/* 하단 고정 바: 네비게이션(약 60px) 위에 뜨도록 */
+/* 하단 고정 바: 네비보다 위로 + 간격 */
+
+:root{
+  --nav-height: 100px;     /* 실제 네비 높이에 맞춰 조정 */
+  --nav-gap: 100px;         /* 네비 위 여유 간격(원하는 만큼 ↑) */
+}
+.chat-inputbar{
+  position: fixed;
+  left: 0;                 /* ← 누락돼 있으면 중앙 정렬이 어긋날 수 있어요 */
+  right: 0;
+  bottom: calc(var(--nav-height) + var(--nav-gap) + env(safe-area-inset-bottom, 0px));
+  margin: 0 auto;
+  
+  padding: 8px 12px 30px 12px;
+  background: #fff;
+  border-top: 1px solid #eee;
+  z-index: 1000;
+}
+
+.chat-inputbar__inner{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* JoinInput 우측에 들어가는 전송 버튼 */
+.chat-send-btn{
+  border: none;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-weight: 600;
+  background: var(--green, #005A37);
+  color: #fff;
+}
+.chat-send-btn[disabled]{ opacity: .5; cursor: not-allowed; }
+
+/* 선택: 추천 버튼(입력 옆 별도 버튼) */
+.chat-reco-btn{
+  border: none;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-weight: 600;
+  background: #111;      /* 보조 버튼 톤 */
+  color: #fff;
+}
+.chat-reco-btn[disabled]{ opacity: .5; cursor: not-allowed; }

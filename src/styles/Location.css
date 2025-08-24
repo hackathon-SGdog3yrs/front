@@ -1,0 +1,91 @@
+/* src/styles/Location.css */
+
+.loc-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 0 0;
+  flex-shrink: 0;                /* 크기 줄어들지 않게 고정 */
+  height: 46px;
+  padding: 8px 20px;
+  justify-content: space-between;
+  align-self: stretch;
+  border-radius: 12px;
+  background: var(--Fill-LightGray, #F5F5F5);
+  position: relative;            /* 드롭다운 absolute 기준 */
+  cursor: pointer;
+}
+
+/* 왼쪽(핀 아이콘 + 텍스트) */
+.loc-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 핀 아이콘 색 적용: color로 제어하고 내부 fill/stroke는 currentColor로 강제 */
+.loc-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  color: #005A37;                /* 아이콘 색상 */
+}
+
+/* 내부 path가 고정 색을 가지고 있어도 덮어쓰기 */
+.loc-icon *[fill]:not([fill="none"]) { fill: currentColor !important; }
+.loc-icon *[stroke]:not([stroke="none"]) { stroke: currentColor !important; }
+
+/* 위치 텍스트 */
+.loc-text {
+  color: var(--Text-Primary, #005A37);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;             /* 22.4px */
+  letter-spacing: -0.16px;
+}
+
+/* 우측 토글(오른쪽 화살표) */
+.toggle-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  color: #005A37;                /* 필요 시 화살표도 동일 색 */
+  transition: transform 0.3s ease;
+}
+
+/* 열렸을 때 회전 */
+.toggle-icon.expanded {
+  transform: rotate(180deg);
+}
+
+/* 드롭다운 박스 */
+.loc-dropdown-content {
+  position: absolute;
+  top: calc(100% + 8px);         /* 컨테이너 하단 + 간격 */
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 46px;
+  padding: 8px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--Stroke-SubGray, #DEDEDE);
+  background: var(--Fill-White-100, #FFF);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+/* 드롭다운 내부 텍스트 */
+.loc-dropdown-content p {
+  padding-left: 24px;
+  color: var(--Text-DarkGray, #4D4D4D);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;             /* 22.4px */
+  letter-spacing: -0.16px;
+}

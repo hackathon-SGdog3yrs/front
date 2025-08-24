@@ -1,0 +1,64 @@
+/* 컨테이너(그대로 사용해도 OK) */
+.join-button-container {
+  display: flex;
+  padding: 12px 24px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  align-self: stretch;
+}
+
+/* 공통 버튼 스타일: 배경/색은 변형 클래스에서만 지정 */
+.join-button {
+  display: flex;
+  height: 44px;
+  padding: 4px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+
+  width: 100%;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+
+  font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+  outline: none; /* 마우스 포커스 외곽선 제거 */
+}
+
+/* ✅ 참여 전: 초록 배경 + 흰 글자 */
+.join-button.not-joined {
+  background: var(--Fill-Secondary, #00B493);
+  color: #fff;
+  border-color: transparent;
+}
+.join-button.not-joined:hover { filter: brightness(0.95); }
+
+/* ✅ 참여 후(= 취소 상태): 흰 배경 + 빨간 테두리/글자 */
+.join-button.joined {
+ border-radius: 8px;
+ color: var(--Text-white, #FFF);
+background: rgba(180, 0, 57, 0.60); /* red-300 */
+}
+
+.join-button.joined:hover { filter: brightness(0.95); }
+
+
+/* 접근성: 키보드 포커스 */
+.join-button:focus-visible {
+  outline: 2px solid #22C55E; /* green-500 */
+  outline-offset: 2px;
+}
+
+/* 비활성화 공통 */
+.join-button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}

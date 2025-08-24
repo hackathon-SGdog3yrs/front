@@ -1,0 +1,57 @@
+:root{
+  --primary: #005A37;
+  --text-medium: #7A7A7A;
+}
+
+/* 탭 버튼(클릭 영역 크게) */
+.nav-item{
+  appearance: none; border: 0; background: transparent;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;                      /* 아이콘-라벨 간격 */
+  padding: 20px 8px 0;           /* Dev Mode: top 20px, side 8px */
+  color: var(--text-medium);
+  cursor: pointer;
+  position: relative;   
+  
+           /* 상단 라인 기준 */
+}
+
+.nav-item .nav-icon {
+  width: 28px;        /* ← 원하는 크기 */
+  height: 28px;       /* ← 원하는 크기 */
+  flex: 0 0 auto;     /* 줄바꿈/축소 방지 */
+  display: inline-block;
+}
+
+/* 아이콘은 currentColor를 따르도록 */
+.nav-icon{ width: 22px; height: 22px; }
+.nav-icon *{ fill: currentColor; }
+
+/* 라벨 텍스트 */
+.nav-label{ font-size: 12px; line-height: 1; }
+
+/* 활성 상태: 글자/아이콘 초록 + 얇고 긴 상단 라인 */
+.nav-item.active{ 
+  color: var(--primary); 
+  font-weight: 600;
+  
+  
+}
+.nav-item.active::before{
+  content: "";
+  position: absolute;
+  top: -2px;                    /* 패널 내부 상단에 딱 붙게 */
+  
+  width: 100%;                   /* 길게 */
+  height: 2px;                  /* 얇게 */
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+/* 키보드 포커스 접근성 */
+.nav-item:focus-visible{
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}

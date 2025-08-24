@@ -1,0 +1,47 @@
+.searchbar {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: #ffffff;
+  padding: 16px 20px; /* Searchbar 주변 여백 */
+  border-bottom: 1px solid #eee;
+}
+
+.searchbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 46px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  width: 100%;
+  background: #f5f5f5; /* var(--Fill-LightGray, #F5F5F5) */
+}
+
+.search-input {
+  flex: 1 0 0;
+  font-size: 14px;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.back-btn,
+.search-btn {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin-right: 8px; /* 왼쪽 버튼 간격 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  
+
+}
+
+.back-btn img,
+.search-btn img {
+  width: 32px;
+  height: 32px;
+}

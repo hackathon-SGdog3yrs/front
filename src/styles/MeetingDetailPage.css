@@ -1,0 +1,5 @@
+/* src/styles/MeetingDetailPage.css */
+
+.gray-spacer {
+    border-bottom: 2px solid var(--Stroke-LightGray, #F5F5F5);
+  }

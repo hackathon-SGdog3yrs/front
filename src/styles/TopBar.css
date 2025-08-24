@@ -1,0 +1,62 @@
+:root{
+  --panel-bg: #FFFFFF;
+  --text-strong: #222;
+}
+
+
+
+
+
+/* Figma 스펙: padding: 80px 24px 0 32px; 높이 40px 행 */
+.topbar{
+    display: flex;
+    padding: 32px 24px 0 32px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+/* 좌/우 영역 */
+.topbar-left,
+.topbar-right{
+  display: flex;
+  align-items: center;
+  height: 40px;                  /* Figma content height */
+}
+
+/* 로고 placeholder (SVG) 크기 - 실제 로고로 교체 시 조절 */
+.logo-btn {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo {
+  width: 112px;      /* 필요에 맞춰 조절 */
+  height: auto;      /* 비율 유지 */
+  display: block;
+}
+
+/* 공통 아이콘 버튼 (터치 영역 40x40) */
+.icon-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border: none; background: transparent;
+  padding: 0; margin: 0; border-radius: 8px;
+  cursor: pointer;
+}
+/* SVG 크기 통일 */
+.icon-btn > svg{
+  width:32px; height: 32px; display: block;
+}
+/* 터치 피드백 */
+.icon-btn:active{ background: rgba(0,0,0,0.06); }
+
+/* 전역 초기화가 안 되어 있다면 기본 여백 제거 권장
+html, body { margin: 0; padding: 0; }
+* { box-sizing: border-box; }
+*/

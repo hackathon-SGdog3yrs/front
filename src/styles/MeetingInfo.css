@@ -1,0 +1,42 @@
+/* src/components/MeetingInfo.css */
+
+.meeting-info-container {
+    display: flex;
+    padding: 16px 24px 20px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    margin-bottom: 2px;
+}
+  
+  .info-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+  }
+  
+  .section-title {
+    color: var(--Text-MediumGray, #7C7C7C);
+
+    /* 16/SemiBold */
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 22.4px */
+  }
+  
+  .section-content {
+    color: var(--Text-Black, #141414);
+
+    /* 16/Regular */
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 22.4px */
+    letter-spacing: -0.16px;
+  }

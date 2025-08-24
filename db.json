@@ -1,0 +1,40 @@
+{
+  "meetings": [
+    {
+      "id": 1,
+      "name": "실버산책 모임",
+      "datetime": "2025-08-10T09:00:00",
+      "current": 5,
+      "maximum": 10,
+      "hostName": "김은혜",
+      "hostAge": 72,
+      "hostGender": "F",
+      "locationName": "마포 실버공원",
+      "locationPicture": [
+        "https://your-bucket.s3.amazonaws.com/location1_1.jpg",
+        "https://your-bucket.s3.amazonaws.com/location1_2.jpg"
+      ],
+      "tag": ["산책", "야외", "건강"],
+      "intro": "마포구 어르신들과 함께하는 주말 아침 산책 모임",
+      "detail": "매주 일요일 오전 9시에 만나 함께 산책합니다. 간단한 스트레칭도 함께 해요."
+    },
+    {
+      "id": 2,
+      "name": "보드게임 동호회",
+      "datetime": "2025-08-12T14:00:00",
+      "current": 3,
+      "maximum": 8,
+      "hostName": "이정호",
+      "hostAge": 68,
+      "hostGender": "M",
+      "locationName": "마포 실버센터",
+      "locationPicture": [
+        "https://your-bucket.s3.amazonaws.com/location2_1.jpg",
+        "https://your-bucket.s3.amazonaws.com/location2_2.jpg"
+      ],
+      "tag": ["실내", "게임", "두뇌활동"],
+      "intro": "함께 웃고 즐기는 보드게임 모임",
+      "detail": "모두가 함께 즐길 수 있는 보드게임! 초보자도 환영입니다 :)"
+    }
+  ]
+}

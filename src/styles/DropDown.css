@@ -1,0 +1,72 @@
+/* 칩 영역 컨테이너: 선 유지 */
+.search-controls{
+  padding: 12px 24px;
+  background: #fff;
+  border-bottom: 1px solid #E3E6E8;
+}
+
+/* DropDown (chip buttons) — 한 줄 고정, 스크롤/줄바꿈 없음 */
+.dropdown.chips{
+  --dd-green: #0A7D5A;
+  --dd-border: #E3E6E8;
+  --dd-bg-light: #F5F5F5;
+  
+
+  /* 🔧 칩 사이즈 토큰 살짝 줄이기 */
+  --dd-pad-y: 8px;
+  --dd-pad-x: 20px;   /* ← 20px → 16px */
+  --dd-gap: 12px;      /* ← 10px → 8px */
+  --dd-radius: 16px;
+
+  display: block;
+  width: 100%;
+  background: #fff;
+}
+
+/* 내부 가로 패딩 제거 + 줄바꿈 금지 */
+.dropdown.chips .chips-row{
+  display: flex;
+  flex-wrap: nowrap;        /* ← 반드시 한 줄 */
+  gap: 8px;
+  justify-content: space-between;
+             /* ← 좌우 0 으로 */
+  align-items: center;
+
+  overflow: hidden;         /* 스크롤/오버플로우 숨김 */
+}
+
+/* 칩 자체 스타일(동일) */
+.dropdown.chips .chip{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--dd-pad-y) var(--dd-pad-x);
+  border-radius: var(--dd-radius);
+  border: 1px solid var(--dd-border);
+  background: var(--dd-bg-light);
+  color: #4D4D4D;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: Pretendard;
+  padding: 8px 20px;
+  font-weight: 400;
+  display: flex;
+  line-height: 140%;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+
+.dropdown.chips .chip.is-active{
+  background: rgba(0, 90, 55, 0.80);
+  color: #fff;
+  border-color: transparent;
+}
+
+.dropdown.chips .chip:focus-visible{
+  outline: 2px solid var(--dd-green);
+  outline-offset: 2px;
+}

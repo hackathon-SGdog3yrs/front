@@ -1,0 +1,174 @@
+/* =========================
+   Search.css
+   홈과 동일 리듬(좌우 24px)
+   ========================= */
+
+/* 페이지 래퍼 */
+.search-page{
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  position: absolute;
+    /* iOS 부드러운 스크롤 */
+}
+
+
+
+
+.search-header{
+  position: -webkit-sticky;  /* iOS Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1000;             /* 카드/스켈레톤 위에 오도록 */
+
+  /* ↓ 너가 쓰던 값들 그대로 유지 */
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 32px 24px 20px;
+
+  /* sticky에서 margin:auto가 간혹 오동작하는 브라우저 보정 */
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+
+
+/* 뒤로가기 버튼 */
+.search-header .back-btn {
+  border: 0;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.search-header .back-btn img { width: 20px; height: 20px; }
+
+/* 초기 힌트 / 빈 상태 */
+.search-hint,
+.empty {
+ 
+  margin: 0 auto;
+  padding: 12px 24px;
+  color: #7a7a7a;
+}
+
+/* =========================
+   결과 리스트 (MeetingShorts)
+   ========================= */
+
+/* 리스트 컨테이너: 좌우 24px */
+.search-results {
+  display: grid;
+  gap: 0;                  /* 행에서 간격/구분선 관리 */
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* 각 행: 위아래 12px + 얇은 구분선 */
+
+
+/* 행 내부 레이아웃: 152×152 썸네일 + 12px 간격 */
+.result-row > * {
+  display: grid;
+  grid-template-columns: 152px 1fr; /* 썸네일 폭 */
+  gap: 12px;
+  align-items: start;
+}
+
+/* 썸네일 강제 (컴포넌트 클래스가 달라도 적용) */
+.result-row :is(img, .thumb, [class*="thumb"], [class*="image"]) {
+  width: 152px !important;
+  height: 152px !important;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+
+
+
+
+/* 하단 네비 가림 방지 */
+.nav-spacer { height: 84px; }
+
+/* =========================
+   Skeleton (검색 중 UI)
+   ========================= */
+
+/* 섹션: padding 20/24, gap 16, 하단 보더 */
+.skel-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 24px;
+  background: #fff;
+  border-bottom: 1px solid var(--Stroke-LightGray, #F5F5F5);
+  
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* 카드: 썸네일 152px */
+.skel-card {
+  --thumb: 152px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.skel-thumb {
+  width: var(--thumb);
+  height: var(--thumb);
+  border-radius: 8px;
+  background: #eee;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.skel-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 라인/칩 */
+.skel-line {
+  height: 12px;
+  border-radius: 6px;
+  background: #eee;
+  position: relative;
+  overflow: hidden;
+}
+.skel-line.w1 { width: 70%; }
+.skel-line.w2 { width: 85%; }
+.skel-line.w3 { width: 55%; }
+
+.skel-chip {
+  height: 28px;
+  border-radius: 4px;
+  background: var(--Fill-LightGray, #F5F5F5);
+  position: relative;
+  overflow: hidden;
+}
+.skel-chip.w120 { width: 120px; }
+.skel-chip.w95  { width: 95px; }
+
+/* 셔머 효과 */
+.skel-thumb::after,
+.skel-line::after,
+.skel-chip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.6), transparent);
+  animation: shimmer 1.2s infinite;
+}
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}

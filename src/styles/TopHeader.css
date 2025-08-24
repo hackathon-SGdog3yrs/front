@@ -1,0 +1,100 @@
+/* src/styles/TopHeader.css */
+
+/* 안전영역 + 디자인 상단 여백(시안 80px)을 같이 반영 */
+:root{
+  --header-top-pad: 32px;                 /* 필요하면 64px 등으로 조정 */
+  --header-height: calc(var(--header-top-pad) + 64px); /* 헤더 실제 높이(대략) */
+                /* 폰 프레임 폭 */
+}
+
+.top-header{
+  position: fixed;
+  /* 화면의 가운데에 고정 배치 */
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+
+  /* 폭을 폰 프레임에 맞춤 */
+  width: 100%;
+  
+
+  z-index: 300;                           /* 폼/카드 위 */
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;   /* 좌/중앙/우 구조 */
+  align-items: center;
+
+  /* 상단 패딩은 안전영역 포함 */
+  padding: calc(var(--header-top-pad) + env(safe-area-inset-top, 0px)) 24px 20px 24px;
+
+  background: var(--Fill-White-100, #FFF);
+  border: 0;
+  border-bottom: 1px solid var(--Stroke-LightGray, #F5F5F5);
+  box-sizing: border-box;
+}
+
+/* 🔹 헤더 자리 확보용 스페이서(헤더 바로 아래에 넣어둔 div) */
+.top-header-spacer{
+  height: 45px;
+  flex-shrink: 0;
+}
+
+/* 가운데 타이틀: 항상 완전 중앙 */
+.top-header .title{
+  margin: 0;
+  color: #141414;
+  text-align: center;
+  font-family: Pretendard, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 120%;
+  letter-spacing: -0.2px;
+  pointer-events: none; /* 클릭 방해 X */
+}
+
+/* 뒤로가기 버튼 */
+.top-header .back-btn{
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  justify-self: start;
+}
+
+.top-header .back-icon{
+  width: 24px;
+  height: 24px;
+  line-height: 0;
+}
+
+/* 우측 슬롯 */
+.top-header .right-slot{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 스크린 리더용 텍스트 숨김 */
+.sr-only{
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* (옵션) 큰 화면에서 폰 프레임 중앙정렬을 더 안정적으로 */
+@media (min-width: 376px){
+  .top-header{
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* --- (옵션) 스크롤 시 살짝 그림자 --- */
+/*
+body.scrolled .top-header { box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+*/

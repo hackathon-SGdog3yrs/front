@@ -1,0 +1,49 @@
+/* src/components/MyPageMeetings.css */
+
+.my-page-container {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    overflow-y: auto;
+    padding-bottom: 24px; /* ✨ 하단 네비게이션바 높이만큼 여백 추가 */
+  }
+  
+  .list-header {
+    display: flex;
+    padding: 20px 32px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-bottom: 1px solid var(--Stroke-LightGray, #F5F5F5);
+    background: var(--Fill-White-100, #FFF);
+  }
+  
+  .list-header p {
+    color: var(--Text-DarkGray, #4D4D4D);
+
+    /* 20/SemiBold */
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%; /* 24px */
+    letter-spacing: -0.2px;
+  }
+  
+  .toggle-icon {
+    transition: transform 0.3s;
+    transform: rotate(90deg);
+  }
+  
+  .toggle-icon.expanded {
+    transform: rotate(270deg);
+  }
+  
+  .highlight-number {
+    color: var(--Fill-Primary-80, rgba(0, 90, 55, 0.80)); /* ✨ 초록색 */
+    margin-left: 4px;
+  }
+
+  .meeting-cards{
+    padding: 0 24px;
+  }
