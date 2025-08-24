@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import UpIcon from "../assets/up.svg?react"; // ↑ 아이콘
+import UpIcon from "../assets/Up.svg?react"; // ↑ 아이콘
 
 /**
  * 시안형 채팅 입력 바
