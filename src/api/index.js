@@ -8,6 +8,11 @@ export const API_BASE = (import.meta.env.VITE_API_URL ?? "").replace(
   ""
 );
 
+/** 프로덕션에서 /api 접두어를 유지할지 여부 (백엔드 라우트가 /api/* 이면 true) */
+const KEEP_PREFIX =
+  String(import.meta.env.VITE_API_KEEP_PREFIX ?? "false").toLowerCase() ===
+  "true";
+
 /** 기본 타임아웃(ms) */
 const DEFAULT_TIMEOUT = 12_000;
 
@@ -17,7 +22,9 @@ const DEV_API_PREFIX = "/api";
 /**
  * 경로 보정
  * - 절대 URL이면 그대로
- * - API_BASE가 설정된(직통 호출) 경우: '/api' 접두가 오더라도 제거해 서버 루트에 맞춤
+ * - API_BASE(직통 호출)가 설정된 경우:
+ *    - KEEP_PREFIX=true  → /api 접두어 유지
+ *    - KEEP_PREFIX=false → /api 접두어 제거하여 서버 루트에 맞춤
  * - API_BASE가 없으면(프록시 사용): 항상 '/api' 접두를 보장
  */
 function normalizePath(path) {
@@ -25,10 +32,14 @@ function normalizePath(path) {
   if (/^https?:\/\//i.test(path)) return path; // 절대 URL
 
   if (API_BASE) {
+    if (KEEP_PREFIX) {
+      return path.startsWith("/") ? path : `/${path}`;
+    }
     if (/^\/api(\/|$)/i.test(path)) return path.replace(/^\/api/i, "") || "/";
     return path.startsWith("/") ? path : `/${path}`;
   }
 
+  // 개발에서 프록시 사용
   if (/^\/api(\/|$)/i.test(path)) return path; // 이미 /api
   const p = path.startsWith("/") ? path : `/${path}`;
   return `${DEV_API_PREFIX}${p}`;
@@ -61,13 +72,19 @@ async function request(
 
   const url = buildUrl(path);
 
+  // ✅ 프리플라이트 최소화: body 있을 때만 Content-Type 지정
+  const h = { ...(headers || {}) };
+  if (body != null && h["Content-Type"] == null) {
+    h["Content-Type"] = "application/json";
+  }
+
   try {
     const res = await fetch(url, {
       method,
-      headers: { "Content-Type": "application/json", ...headers },
+      headers: h,
       body: body != null ? JSON.stringify(body) : undefined,
       signal: controller.signal,
-      // credentials: "include",
+      // credentials: "include", // 쿠키 인증이면 해제
     });
 
     const raw = await res.text();
