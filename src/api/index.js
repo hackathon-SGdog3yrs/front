@@ -1,12 +1,11 @@
 // src/api/index.js
 
 /** ex) https://sg3yrs-masil.duckdns.org  (.env에 VITE_API_URL 권장)
- *  - 개발에서 Vite 프록시(/api → duckdns)를 쓰면 비워둬도 됩니다.
+ *  로컬(vite)과 Vercel(prod)에서는 /api 상대경로만 쓰도록 강제해
+ *  프록시/리라이트를 타게 합니다.
  */
-export const API_BASE = (import.meta.env.VITE_API_URL ?? "").replace(
-  /\/+$/,
-  ""
-);
+const API_BASE_RAW = (import.meta.env.VITE_API_URL ?? "").trim();
+const API_BASE = API_BASE_RAW.replace(/\/+$/, "");
 
 /** 프로덕션에서 /api 접두어를 유지할지 여부 (백엔드 라우트가 /api/* 이면 true) */
 const KEEP_PREFIX =
@@ -19,19 +18,35 @@ const DEFAULT_TIMEOUT = 12_000;
 /** 개발 환경 기본 접두: /api (Vite proxy 대상) */
 const DEV_API_PREFIX = "/api";
 
+/** 호스트 판별: 로컬/사설IP/베르셀 도메인은 프록시/리라이트 강제 */
+const IS_BROWSER =
+  typeof window !== "undefined" && typeof location !== "undefined";
+const IS_LOCAL =
+  IS_BROWSER &&
+  /^(localhost|127\.0\.0\.1|192\.168\.|10\.|172\.(1[6-9]|2\d|3[0-1]))$/i.test(
+    location.hostname
+  );
+const ON_VERCEL = IS_BROWSER && /\.vercel\.app$/i.test(location.hostname);
+
+/** 로컬 또는 Vercel에서는 상대경로(/api/...)만 사용 */
+const FORCE_PROXY = IS_LOCAL || ON_VERCEL;
+
+/** 최종 사용할 API_BASE (프록시/리라이트 모드면 공백) */
+const EFFECTIVE_API_BASE = FORCE_PROXY ? "" : API_BASE;
+
 /**
  * 경로 보정
  * - 절대 URL이면 그대로
- * - API_BASE(직통 호출)가 설정된 경우:
+ * - EFFECTIVE_API_BASE(직통 호출)가 설정된 경우:
  *    - KEEP_PREFIX=true  → /api 접두어 유지
  *    - KEEP_PREFIX=false → /api 접두어 제거하여 서버 루트에 맞춤
- * - API_BASE가 없으면(프록시 사용): 항상 '/api' 접두를 보장
+ * - EFFECTIVE_API_BASE가 없으면(프록시/리라이트 사용): 항상 '/api' 접두를 보장
  */
 function normalizePath(path) {
   if (!path) return "/";
   if (/^https?:\/\//i.test(path)) return path; // 절대 URL
 
-  if (API_BASE) {
+  if (EFFECTIVE_API_BASE) {
     if (KEEP_PREFIX) {
       return path.startsWith("/") ? path : `/${path}`;
     }
@@ -39,7 +54,7 @@ function normalizePath(path) {
     return path.startsWith("/") ? path : `/${path}`;
   }
 
-  // 개발에서 프록시 사용
+  // 프록시/리라이트 사용 모드
   if (/^\/api(\/|$)/i.test(path)) return path; // 이미 /api
   const p = path.startsWith("/") ? path : `/${path}`;
   return `${DEV_API_PREFIX}${p}`;
@@ -47,8 +62,8 @@ function normalizePath(path) {
 
 function buildUrl(path) {
   const p = normalizePath(path);
-  if (/^https?:\/\//i.test(p)) return p;
-  return API_BASE ? `${API_BASE}${p}` : p;
+  if (/^https?:\/\//i.test(p)) return p; // 절대 URL
+  return EFFECTIVE_API_BASE ? `${EFFECTIVE_API_BASE}${p}` : p;
 }
 
 /**
@@ -72,7 +87,7 @@ async function request(
 
   const url = buildUrl(path);
 
-  // ✅ 프리플라이트 최소화: body 있을 때만 Content-Type 지정
+  // body 있을 때만 Content-Type 지정(프리플라이트 최소화)
   const h = { ...(headers || {}) };
   if (body != null && h["Content-Type"] == null) {
     h["Content-Type"] = "application/json";
@@ -175,7 +190,7 @@ export function joinMeeting(userId, meetId, opts) {
 
 /** 모임 참여 취소 (DELETE /api/meet/join) */
 export function leaveMeeting(userId, meetId, opts) {
-  // NOTE: 일부 서버는 DELETE body를 제한하는데, 스펙 문서 기준 body 사용
+  // 일부 서버는 DELETE body 제한 → 스펙 문서 기준 body 사용
   return request(`/api/meet/join`, {
     method: "DELETE",
     body: { userId: Number(userId), meetId: Number(meetId) },
