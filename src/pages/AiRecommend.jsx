@@ -103,7 +103,7 @@ export default function AiRecommend() {
         next[i] = {
           kind: "msg",
           who: "bot",
-          text: "추천을 불러오지 못했어요. 잠시 후 다시 시도해 주세요.",
+          text: "추천모임을 불러오지 못했어요. 챗봇과 대화를 먼저 진행해주세요. ",
         };
         return next;
       });

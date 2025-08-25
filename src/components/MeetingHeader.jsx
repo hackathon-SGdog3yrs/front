@@ -43,7 +43,7 @@ const MeetingHeader = ({ data }) => {
       </div>
       
       <div className="header-location">
-        <img src={LocationIcon} alt="위치 아이콘" className="info-icon" />
+        <img src={LocationIcon} alt="위치 아이콘" className="info-icon1" />
         <p>{data.locationName}</p>
       </div>
 

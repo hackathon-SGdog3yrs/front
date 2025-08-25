@@ -9,7 +9,7 @@ const MeetingInfo = ({ data }) => {
   return (
     <div className="meeting-info-container">
       <div className="info-section">
-        <h2 className="section-title">모임 정보</h2>
+        <h2 className="section-title">모임 설명</h2>
         <p className="section-content">{data.detail}</p>
       </div>
 

@@ -18,7 +18,7 @@ const MyPageHeader = ({ userInfo }) => {
         </div>
         <div className="profile-text-group">
             <p className="user-name">{userInfo.name}</p>
-            <p className="user-meta">{userInfo.age}대, {genderInKorean}</p>
+            <p className="user-meta">{userInfo.age}세, {genderInKorean}</p>
         </div>
       </div>
     </div>

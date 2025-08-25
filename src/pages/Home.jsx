@@ -126,7 +126,7 @@ export default function Home() {
         <TopBar sticky onSearchClick={() => navigate("/search")} />
 
         {/* 메인 타이틀 */}
-        <h2 className="home-title">오늘은 어떤 모임에{"\n"}참여해볼까요?</h2>
+        <h2 className="home-title">오늘은 어떤 모임에<br />참여해볼까요?</h2>
 
         {/* 위치/지역 변경 */}
         <div className="row">

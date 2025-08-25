@@ -330,7 +330,7 @@ export default function Create() {
             className="submit-btn"
             disabled={!isValid || submitting}
           >
-            {submitting ? "생성 중..." : "모임 참여"}
+            {submitting ? "생성 중..." : "모임 생성"}
           </button>
         </div>
       </form>

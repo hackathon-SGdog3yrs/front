@@ -17,7 +17,7 @@ const HostInfo = ({ data }) => {
                 <p className="host-name">{data.name}</p>
             </div>
             <div className="host-meta">
-                <p>{data.age}대, {genderInKorean}</p>
+                <p>{data.age}세, {genderInKorean}</p>
             </div>
             <div className="host-stats">
                 <p className="stat-item">
