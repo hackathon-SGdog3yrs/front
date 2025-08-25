@@ -15,13 +15,13 @@
   .card-name {
     color: var(--Text-Black, #141414);
 
-    /* 20/SemiBold */
-    font-family: Pretendard;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 120%; /* 24px */
-    letter-spacing: -0.2px;
+  /* 20/SemiBold */
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%; /* 24px */
+  letter-spacing: -0.2px;
   }
   
   .card-meta-loc, .card-meta-per {
@@ -49,3 +49,45 @@
     line-height: 140%; /* 22.4px */
     letter-spacing: -0.16px;
   }
+
+  /* 제목(좌) - 광고뱃지(우) */
+  .card-info{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+  } 
+
+
+  .ad{
+  margin-left: auto; 
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: #fff;
+  color: var(--green, #00B493);
+  flex: 0 0 auto;   /* 줄바꿈 없이 우측 고정 */
+}
+
+.card-ad{
+  color: var(--Text-Primary, #005A37);
+
+/* 14/Regular */
+font-family: Pretendard;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 140%; /* 19.6px */
+letter-spacing: -0.14px;
+}
+
+.ad-icon{
+  width: 15px;
+  height: 15px;
+}
+
+.card-details{
+  width: 100%;
+}
