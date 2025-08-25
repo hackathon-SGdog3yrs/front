@@ -1,44 +1,53 @@
-import React from 'react';
-import CalendarIcon from '../assets/calendar.svg';
-import LocationIcon from '../assets/default.svg';
-import PersonIcon from '../assets/person.svg';
-import ImageSwiper from './ImageSwiper';
-import '../styles/MyPageMeetingCard.css';
+// src/components/MyPageMeetingCard.jsx
+import React from "react";
+import { Link } from "react-router-dom";   // 추가
+import CalendarIcon from "../assets/calendar.svg";
+import LocationIcon from "../assets/default.svg";
+import PersonIcon from "../assets/person.svg";
+import ImageSwiper from "./ImageSwiper";
+import "../styles/MyPageMeetingCard.css";
 
 const MyPageMeetingCard = ({ meeting }) => {
-  if (!meeting) {
-    return null;
-  }
+  if (!meeting) return null;
 
   const date = new Date(meeting.datetime);
   const formattedDateTime = `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()} / ${date.getHours()}:00`;
 
+  // ✅ id 추출
+  const id = meeting.id ?? meeting.meetId ?? meeting.meetingId;
+
   return (
-    <div className="mypage-meeting-item">
-      <div className="meeting-title">
-        <h1 className="item-title-text">{meeting.name}</h1>
-      </div>
-      <div className="meeting-body">
-        <p className="item-body-text">{meeting.intro}</p>
-      </div>
-      <ImageSwiper images={meeting.locationPicture} />
-      <div className="meeting-info">
-        <div className="info-item">
-          <img src={CalendarIcon} alt="캘린더 아이콘" className="info-icon" />
-          <p>{formattedDateTime}</p>
+    <Link
+      to={`/meeting/${id}`}          // 클릭 시 이동
+      state={{ meeting }}            // 상세 페이지에서 useLocation().state.meeting 으로 접근 가능
+      style={{ textDecoration: "none", color: "inherit", display: "block" }}
+    >
+      <div className="mypage-meeting-item">
+        <div className="meeting-title">
+          <h1 className="item-title-text">{meeting.name}</h1>
         </div>
-        <div className="info-item">
-          <img src={PersonIcon} alt="사람 아이콘" className="info-icon" />
-          <p>
-            <span className="current-count">{meeting.current}</span> / {meeting.maximum}
-          </p>
+        <div className="meeting-body">
+          <p className="item-body-text">{meeting.intro}</p>
+        </div>
+        <ImageSwiper images={meeting.locationPicture} />
+        <div className="meeting-info">
+          <div className="info-item">
+            <img src={CalendarIcon} alt="캘린더 아이콘" className="info-icon" />
+            <p>{formattedDateTime}</p>
+          </div>
+          <div className="info-item">
+            <img src={PersonIcon} alt="사람 아이콘" className="info-icon" />
+            <p>
+              <span className="current-count">{meeting.current}</span> / {meeting.maximum}
+            </p>
+          </div>
+        </div>
+        <div className="meeting-location">
+          <img src={LocationIcon} alt="위치 아이콘" className="info-icon" />
+          <p>{meeting.locationName}</p>
         </div>
       </div>
-      <div className="meeting-location">
-        <img src={LocationIcon} alt="위치 아이콘" className="info-icon" />
-        <p>{meeting.locationName}</p>
-      </div>
-    </div>
+    </Link>
   );
 };
 

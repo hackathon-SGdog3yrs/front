@@ -14,16 +14,23 @@ export default function Navbar() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  // ✅ '/me' 는 매칭, '/meeting' 은 불일치
+  // ✅ base 경로와 그 하위를 매칭(예: "/ai" 또는 "/ai/...") 
   const isUnder = (base) =>
     pathname === base || pathname.startsWith(`${base}/`);
 
   const activeId = useMemo(() => {
-    if (pathname === "/" || isUnder("/meeting")) return "home";
-    if (isUnder("/ai")) return "chat"; // /ai 및 /ai/...만
-    if (isUnder("/create") || isUnder("/locationpage")) return "create"; // /create 및 하위만
-    if (isUnder("/me")) return "me"; // /me 및 하위만
-    return ""; // /meeting 등은 전부 회색(비활성)
+    // 홈 활성: 루트(/), 모임 상세(/meeting/*), 검색(/search/*)
+    if (pathname === "/" || isUnder("/meeting") || isUnder("/search")) {
+      return "home";
+    }
+    // AI 추천 활성: /ai/*
+    if (isUnder("/ai")) return "chat";
+    // 생성/위치 관련 활성: /create/*, /locationpage/*
+    if (isUnder("/create") || isUnder("/locationpage")) return "create";
+    // 내 정보 활성: /me/*
+    if (isUnder("/me")) return "me";
+    // 그 외: 모두 비활성(회색)
+    return "";
   }, [pathname]);
 
   const items = useMemo(
